@@ -1,0 +1,55 @@
+#### Example Query in http://localhost:5000/graphql
+
+# Create User::: (json)
+
+{
+  "query": "mutation CreateUser($name: String!, $email: String!, $password: String!, $age: Int, $role: String) { createUser(name: $name, email: $email, password: $password, age: $age, role: $role) { id name email role } }",
+  "variables": {
+    "name": "Murugan2",
+    "email": "murugan2@example.com",
+    "password": "test1232",
+    "age": 25,
+    "role": "admin"
+  }
+}
+
+
+
+# Get All Users:::
+   
+     query {
+  getUsers {
+    id
+    name
+    email
+  }
+}
+
+# signIN:::
+
+   mutation {
+  signInUser(email: "murugan@example.com", password: "test123") {
+    token
+    user {
+      id
+      name
+      email
+      role
+    }
+  }
+}
+
+
+# product create admin::: (with header token)(query)
+
+    mutation {
+  createProduct(name: "Laptop", price: 59999.99, stock: 20) {
+    id
+    name
+    price
+    stock
+  }
+}
+
+
+////////////   END   //////////////
